@@ -6,7 +6,6 @@ A Python-based scraper for collecting product information from Shopee Thailand.
 This project automates the following steps:
 - Login with your Shopee credentials
 - Search for a specific keyword
-- Scroll through the product listing pages
 - Extract product details (name, price, variants, stock, category, seller info, ratings, etc.)
 - Logout to end the session cleanly
 
@@ -74,7 +73,7 @@ This project accepts parameters via the command-line.
 
 #### Example Command:
 ```sh
-python main.py --username your_username --password your_password --keyword "หน้ากากอนามัย" --numpage 2 --itemperpage 20
+python main.py --username your_username --password your_password --keyword "iphone" --numpage 2 --itemperpage 5
 ```
 
 A browser window should open, navigate to Shopee, log in with your credentials, perform the search, scrape the product data, and then log out.
