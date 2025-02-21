@@ -49,8 +49,8 @@ Utilizes SeleniumBase under the hood for browser automation, including support f
 
 ### Clone the Repository
 ```sh
-git clone https://github.com/your-username/my_shopee_scraper.git
-cd my_shopee_scraper
+git clone https://github.com/toptankcpe/shopee-scraper.git
+cd shopee-scraper
 ```
 
 ### Install Dependencies
@@ -68,8 +68,8 @@ This project accepts parameters via the command-line.
 - `--keyword`: The search keyword.
 
 #### Optional Parameters:
-- `--numpage`: The number of pages to scrape (must be > 0 if provided). Defaults to `None`.
-- `--itemperpage`: The number of items per page to scrape (must be > 0 if provided). Defaults to `None`.
+- `--numpage`: The number of pages to scrape.
+- `--itemperpage`: The number of items per page to scrape.
 
 #### Example Command:
 ```sh
