@@ -10,7 +10,7 @@ This project automates the following steps:
 - Logout to end the session cleanly
 
 ## Features
-### Object-Oriented Structure
+### Class Structure
 Organized into classes such as:
 - `LoginHandler`
 - `SearchHandler`
