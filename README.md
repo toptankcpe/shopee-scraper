@@ -19,7 +19,7 @@ Organized into classes such as:
 
 All are orchestrated by a `ShopeeScraper` facade.
 
-### Template Method and Facade Patterns
+### Facade and Template Method 
 - `AbstractScraper` defines a template method (`scrape()`) with `before_scrape()`, `do_scrape()`, and `after_scrape()`.
 - `ShopeeScraper` provides a unified interface (facade) to simplify the scraping workflow.
 
