@@ -55,11 +55,10 @@ class VariantScraper:
         return price, stock
 
     def select_and_scrape(self, sb, option_categories, selected_options=None):
-        print(option_categories)
         if selected_options is None:
             selected_options = {}
 
-        if not option_categories: # 如果在最後一層選單
+        if not option_categories:
             price, stock = self.scrape_price_and_stock(sb)
             self.results.append({
                 "options": selected_options,
