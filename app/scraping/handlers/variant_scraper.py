@@ -55,10 +55,11 @@ class VariantScraper:
         return price, stock
 
     def select_and_scrape(self, sb, option_categories, selected_options=None):
+        print(option_categories)
         if selected_options is None:
             selected_options = {}
 
-        if not option_categories:
+        if not option_categories: # 如果在最後一層選單
             price, stock = self.scrape_price_and_stock(sb)
             self.results.append({
                 "options": selected_options,
@@ -70,7 +71,7 @@ class VariantScraper:
 
         current_category = option_categories[0]
         buttons = self.get_option_buttons(sb, current_category)
-        for btn in buttons:
+        for idx, btn in enumerate(buttons):
             try:
                 btn.save_to_dom()
                 sb.sleep(1)
@@ -83,10 +84,16 @@ class VariantScraper:
             except Exception as e:
                 print(f"[ERROR] Failed to select option for category '{current_category}': {e}")
                 continue
-
+            
             self.select_and_scrape(
                 sb, 
                 option_categories[1:], 
                 {**selected_options, current_category: btn.get_attribute("aria-label")}
-            )
+            )            
+            
+            if idx == len(buttons)-1: #deselect button if it's the end of second layer
+                btn.save_to_dom()
+                sb.sleep(1)
+                btn.mouse_click()
+                sb.sleep(1)
 
