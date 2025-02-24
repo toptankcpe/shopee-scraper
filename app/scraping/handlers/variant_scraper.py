@@ -70,7 +70,7 @@ class VariantScraper:
 
         current_category = option_categories[0]
         buttons = self.get_option_buttons(sb, current_category)
-        for btn in buttons:
+        for idx, btn in enumerate(buttons):
             try:
                 btn.save_to_dom()
                 sb.sleep(1)
@@ -83,10 +83,16 @@ class VariantScraper:
             except Exception as e:
                 print(f"[ERROR] Failed to select option for category '{current_category}': {e}")
                 continue
-
+            
             self.select_and_scrape(
                 sb, 
                 option_categories[1:], 
                 {**selected_options, current_category: btn.get_attribute("aria-label")}
-            )
+            )            
+            
+            if idx == len(buttons)-1: #deselect button if it's the end of second layer
+                btn.save_to_dom()
+                sb.sleep(1)
+                btn.mouse_click()
+                sb.sleep(1)
 
